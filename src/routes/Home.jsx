@@ -1,10 +1,22 @@
+import styled from 'styled-components';
+import headerBg from '../assets/images/pexels-gustavo-fring-4173108.jpg';
+import onlineShopImg from '../assets/images/pexels-katrin-bolovtsova-4049870.jpg';
+import supportImg from '../assets/images/pexels-yan-krukau-8867213.jpg';
+
+const StyledHeader = styled.header`
+  background-image: url(${headerBg});
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 1rem;
+`;
+
 const Home = () => {
   return (
     <div>
-      <header>
-        <h1>Welcome to WebCart Wonders</h1>
+      <StyledHeader>
+        <h1>Welcome to Belethor&apos;s General Goods</h1>
         <h3>your one-stop destination for all your everyday needs.</h3>
-      </header>
+      </StyledHeader>
       <main>
         <section>
           <p>
@@ -13,12 +25,14 @@ const Home = () => {
           </p>
         </section>
         <section>
+          <img src={onlineShopImg} alt="online shopping" />
           <p>
             Browse our wide range of products across different categories and find what you are
             looking for in just a few clicks.
           </p>
         </section>
         <section>
+          <img src={supportImg} alt="support" />
           <p>
             we value your satisfaction and convenience. That’s why we offer easy payment options,
             free returns, and 24/7 customer support. You can also join our loyalty program and earn
@@ -26,7 +40,7 @@ const Home = () => {
           </p>
         </section>
         <section>
-          <p>Shop with us today and discover the difference of WebCart Wonders!</p>
+          <p>Shop with us today and discover the difference of Belethor&apos;s General Goods!</p>
         </section>
       </main>
     </div>
