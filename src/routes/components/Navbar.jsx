@@ -29,6 +29,7 @@ const Navbar = () => {
         <Icon src={cartIcon} />
         <span>3</span>
       </StyledNavLink>
+      <StyledNavLink to="/support">Support</StyledNavLink>
     </StyledNavbar>
   );
 };

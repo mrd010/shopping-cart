@@ -10,6 +10,7 @@ import Shop from './routes/Shop';
 import Cart from './routes/Cart';
 import Item from './routes/Item';
 import ErrorPage from './ErrorPage';
+import Support from './routes/Support';
 
 const Router = () => {
   const router = createBrowserRouter(
@@ -20,6 +21,7 @@ const Router = () => {
         <Route element={<Shop></Shop>} path="/shop"></Route>
         <Route element={<Item></Item>} path="/product/:productId"></Route>
         <Route element={<Cart></Cart>} path="/cart"></Route>
+        <Route element={<Support></Support>} path="/support"></Route>
       </Route>
     )
   );

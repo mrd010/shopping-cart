@@ -30,6 +30,7 @@ const Home = () => {
             Browse our wide range of products across different categories and find what you are
             looking for in just a few clicks.
           </p>
+          <a href="#">Shop Now</a>
         </section>
         <section>
           <img src={supportImg} alt="support" />
@@ -38,9 +39,11 @@ const Home = () => {
             free returns, and 24/7 customer support. You can also join our loyalty program and earn
             rewards for every purchase you make.
           </p>
+          <a href="#">Contact Us</a>
         </section>
         <section>
           <p>Shop with us today and discover the difference of Belethor&apos;s General Goods!</p>
+          <a href="#">About us</a>
         </section>
       </main>
     </div>
