@@ -22,6 +22,8 @@ const Icon = styled.img`
 
 const Navbar = () => {
   const cart = useContext(CartContext);
+  const cartCount = cart.reduce((count, product) => count + product.count, 0);
+
   return (
     <StyledNavbar>
       <StyledNavLink to="/home">
@@ -30,7 +32,7 @@ const Navbar = () => {
       <StyledNavLink to="/shop">Shop</StyledNavLink>
       <StyledNavLink to="/cart">
         <Icon src={cartIcon} />
-        <span>{cart.length}</span>
+        <span>{cartCount}</span>
       </StyledNavLink>
       <StyledNavLink to="/support">Support</StyledNavLink>
     </StyledNavbar>

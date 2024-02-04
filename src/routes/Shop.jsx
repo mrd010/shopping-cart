@@ -1,7 +1,6 @@
 import { NavLink, Outlet, useLoaderData } from 'react-router-dom';
 
 const Shop = () => {
-  // extract unique category list
   const { categories } = useLoaderData();
   return (
     <div>

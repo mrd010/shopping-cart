@@ -1,7 +1,19 @@
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CartDispatchContext } from '../../CartContext';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, count }) => {
+  const dispatch = useContext(CartDispatchContext);
+
+  const handleAddToCart = () => {
+    dispatch({ type: 'added', id: product.id });
+  };
+
+  const handleRemoveFromCart = () => {
+    dispatch({ type: 'removed', id: product.id });
+  };
+
   return (
     <div>
       <Link to={`product/${product.id}`}>
@@ -10,11 +22,22 @@ const ProductCard = ({ product }) => {
       </Link>
       <span>rate:{product.rating.rate}</span>
       <span>price:{product.price}$</span>
-      <button>Add to cart</button>
+      <div>
+        {count <= 0 ? (
+          <button onClick={handleAddToCart}>Add to cart</button>
+        ) : (
+          <>
+            <button onClick={handleAddToCart}>+</button>
+            <span>{count}</span>
+            <button onClick={handleRemoveFromCart}>-</button>
+          </>
+        )}
+      </div>
     </div>
   );
 };
 
+// Prop types ####################################
 const isUrl = (props, propName, componentName) => {
   try {
     new URL(props[propName]);
@@ -26,6 +49,7 @@ const isUrl = (props, propName, componentName) => {
 };
 
 ProductCard.propTypes = {
+  count: PropTypes.number.isRequired,
   product: PropTypes.shape({
     category: PropTypes.string.isRequired,
     description: PropTypes.string,

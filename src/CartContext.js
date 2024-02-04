@@ -21,9 +21,9 @@ export const cartReducer = (cart, action) => {
           if (product.count <= 1) {
             return cart.filter((p) => p.id !== product.id);
           }
-          return cart.map((p) => {
-            p.id === product.id ? { id: product.id, count: product.count - 1 } : p;
-          });
+          return cart.map((p) =>
+            p.id === product.id ? { id: product.id, count: product.count - 1 } : p
+          );
         }
       }
       break;
