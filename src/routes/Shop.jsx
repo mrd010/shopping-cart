@@ -1,17 +1,27 @@
-import ProductCard from './components/ProductCard';
+import { NavLink, Outlet, useLoaderData } from 'react-router-dom';
 
 const Shop = () => {
+  // extract unique category list
+  const { categories } = useLoaderData();
   return (
     <div>
       <header>
-        <h1>Browse through all our products</h1>
+        <h1>Browse through our products</h1>
       </header>
+      <nav>
+        <h3>Categories</h3>
+        <ul>
+          {categories.map((cat) => {
+            return (
+              <li key={cat}>
+                <NavLink to={cat}>{cat}</NavLink>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
       <main>
-        <section>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-          <ProductCard></ProductCard>
-        </section>
+        <Outlet></Outlet>
       </main>
     </div>
   );
