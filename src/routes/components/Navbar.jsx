@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom';
 import homeIcon from '../../assets/icons/home.svg';
 import cartIcon from '../../assets/icons/shopping_cart.svg';
 import styled from 'styled-components';
+import { useContext } from 'react';
+import { CartContext } from '../../CartContext';
 
 const StyledNavbar = styled.nav`
   display: flex;
@@ -19,6 +21,7 @@ const Icon = styled.img`
 `;
 
 const Navbar = () => {
+  const cart = useContext(CartContext);
   return (
     <StyledNavbar>
       <StyledNavLink to="/home">
@@ -27,7 +30,7 @@ const Navbar = () => {
       <StyledNavLink to="/shop">Shop</StyledNavLink>
       <StyledNavLink to="/cart">
         <Icon src={cartIcon} />
-        <span>3</span>
+        <span>{cart.length}</span>
       </StyledNavLink>
       <StyledNavLink to="/support">Support</StyledNavLink>
     </StyledNavbar>
