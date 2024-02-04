@@ -14,7 +14,7 @@ const Shop = () => {
           {categories.map((cat) => {
             return (
               <li key={cat}>
-                <NavLink to={cat}>{cat}</NavLink>
+                <NavLink to={`category/${cat}`}>{cat}</NavLink>
               </li>
             );
           })}
