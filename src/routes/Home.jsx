@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import headerImg from '../assets/images/pexels-gustavo-fring-4173108.jpg';
 import productTypesImg from '../assets/images/2712c38d93de72795331d955b2116874.jpg';
 
@@ -23,12 +23,14 @@ const StyledHomeSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 1rem;
-  gap: 2rem;
+  gap: 4rem;
 `;
 
 const StyledSideImage = styled.div`
   height: 100%;
   overflow: hidden;
+  box-shadow: 0 0 5px ${(props) => props.theme.shadow};
+  border-radius: 10px;
   img {
     height: 100%;
     object-fit: cover;
@@ -46,6 +48,15 @@ const SideDetails = styled.div`
   p {
     text-align: ${(props) => props.align};
     font-size: 1.4rem;
+    padding: 0 1rem;
+    ${(props) =>
+      props.align === 'right'
+        ? css`
+            border-right: 5px solid ${(props) => props.theme.main};
+          `
+        : css`
+            border-left: 5px solid ${(props) => props.theme.main};
+          `}
   }
 `;
 
