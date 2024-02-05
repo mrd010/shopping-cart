@@ -33,6 +33,7 @@ export const theme = {
   fg: '#020617',
   bg: '#f1f5f9',
   main: '#be123c',
+  shadow: 'rgba(0,0,0,0.25)',
 };
 
 export default GlobalStyles;

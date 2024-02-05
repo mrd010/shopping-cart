@@ -9,6 +9,8 @@ const StyledHeader = styled.header`
   border-radius: 20px;
   overflow: hidden;
   align-items: start;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 10px ${(props) => props.theme.shadow};
 `;
 
 const BgImage = styled.img`
@@ -24,7 +26,7 @@ const PrimaryTitle = styled.h1`
   font-size: 2.5rem;
   margin-left: 2rem;
   margin-top: 2rem;
-
+  user-select: none;
   grid-row: 1 / 2;
   grid-column: 1 / -1;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -36,6 +38,7 @@ const SecondaryTitle = styled.p`
   grid-row: 2 / 3;
   grid-column: 1 / -1;
   font-weight: 600;
+  user-select: none;
 `;
 
 const PageHeader = ({ primaryTitle, secondaryTitle, bgPath }) => {
