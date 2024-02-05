@@ -13,6 +13,8 @@ const StyledNavbar = styled.nav`
   color: ${(props) => props.theme.bg};
   padding: 0 1rem;
   font-weight: 600;
+  position: sticky;
+  top: 0;
 `;
 
 const StyledNavLink = styled(NavLink)`

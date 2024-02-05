@@ -14,12 +14,14 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
-  body{
+  #root{
     font-family: Abel,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.2rem;
     display: flex;
     flex-flow: column nowrap;
   }
+
+
 `;
 
 export const theme = {
