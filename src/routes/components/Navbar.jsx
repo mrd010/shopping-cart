@@ -61,7 +61,7 @@ const Navbar = () => {
       </StyledNavLink>
       <StyledNavLink to="/cart" style={{ marginRight: 'auto' }}>
         <Icon iconPath={cartIcon} size={28} />
-        <LinkNotifier>{cartCount}</LinkNotifier>
+        {cartCount > 0 && <LinkNotifier>{cartCount}</LinkNotifier>}
       </StyledNavLink>
       <StyledNavLink to="/support">Support</StyledNavLink>
     </StyledNavbar>
