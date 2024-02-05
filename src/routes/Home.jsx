@@ -1,23 +1,23 @@
 import styled from 'styled-components';
-import headerBg from '../assets/images/pexels-gustavo-fring-4173108.jpg';
+import headerImg from '../assets/images/pexels-gustavo-fring-4173108.jpg';
 import onlineShopImg from '../assets/images/pexels-katrin-bolovtsova-4049870.jpg';
 import supportImg from '../assets/images/pexels-yan-krukau-8867213.jpg';
 import { Link } from 'react-router-dom';
+import PageHeader from './components/PageHeader';
 
-const StyledHeader = styled.header`
-  background-image: url(${headerBg});
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: 1rem;
+const StyledHome = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
 `;
 
 const Home = () => {
   return (
-    <div>
-      <StyledHeader>
-        <h1>Welcome to Belethor&apos;s General Goods</h1>
-        <h3>your one-stop destination for all your everyday needs.</h3>
-      </StyledHeader>
+    <StyledHome>
+      <PageHeader
+        primaryTitle="Welcome to Belethor's General Goods"
+        secondaryTitle="your one-stop destination for all your everyday needs."
+        bgPath={headerImg}
+      ></PageHeader>
       <main>
         <section>
           <p>
@@ -46,7 +46,7 @@ const Home = () => {
           <p>Shop with us today and discover the difference of Belethor&apos;s General Goods!</p>
         </section>
       </main>
-    </div>
+    </StyledHome>
   );
 };
 export default Home;

@@ -3,12 +3,17 @@ import normalize from 'styled-normalize';
 import abelFont from './assets/fonts/abel-regular-webfont.woff';
 
 const GlobalStyles = createGlobalStyle`
-  ${normalize}
+  
   @font-face {
   font-family: 'Abel';
   src: url(${abelFont}) format('woff');
   font-weight: normal;
   font-style: normal;
+}
+${normalize}
+img{
+  width: 100%;
+  display: block;
 }
   a{
     text-decoration: none;
