@@ -7,6 +7,7 @@ import SortMenu from './components/SortMenu';
 
 const CatalogContainer = styled.section`
   display: flex;
+  gap: 1rem;
   flex-flow: column nowrap;
 `;
 const CatalogHeader = styled.div`
@@ -16,6 +17,7 @@ const CatalogHeader = styled.div`
   background-color: #eeeeeeee;
   border-radius: 10px;
   position: sticky;
+  z-index: 40;
   top: 5rem;
   box-shadow: 0 0 8px ${(props) => props.theme.shadow};
 `;
@@ -31,6 +33,7 @@ const ProductsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem 0.5rem;
+  padding: 1rem;
 `;
 
 const Catalog = () => {

@@ -14,8 +14,9 @@ import { SHIP_FREE_THRESHOLD } from '../../Loaders';
 const StyledProductCard = styled.div`
   display: grid;
   grid-template-rows: 1fr 50px;
-  border: 1px solid black;
   overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px ${(props) => props.theme.shadow};
 `;
 
 const ProductInfo = styled(Link)`

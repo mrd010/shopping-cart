@@ -11,7 +11,7 @@ const SideMenu = styled.nav`
   top: 5rem;
   left: 0;
   align-self: start;
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
   box-shadow: 0 0 8px ${(props) => props.theme.shadow};
 `;
 
