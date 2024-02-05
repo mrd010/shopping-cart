@@ -27,6 +27,12 @@ const CategoryTitle = styled.h2`
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 `;
 
+const ProductsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem 0.5rem;
+`;
+
 const Catalog = () => {
   const { category, products } = useLoaderData();
   const cart = useContext(CartContext);
@@ -38,16 +44,18 @@ const Catalog = () => {
         <SortMenu></SortMenu>
       </CatalogHeader>
 
-      {products.map((product) => {
-        const productInCart = cart.find((p) => p.id === product.id);
-        return (
-          <ProductCard
-            key={product.id}
-            product={product}
-            count={productInCart ? productInCart.count : 0}
-          ></ProductCard>
-        );
-      })}
+      <ProductsContainer>
+        {products.map((product) => {
+          const productInCart = cart.find((p) => p.id === product.id);
+          return (
+            <ProductCard
+              key={product.id}
+              product={product}
+              count={productInCart ? productInCart.count : 0}
+            ></ProductCard>
+          );
+        })}
+      </ProductsContainer>
     </CatalogContainer>
   );
 };

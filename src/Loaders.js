@@ -9,3 +9,5 @@ export const categoriesLoader = async () => {
   categories.sort();
   return { categories };
 };
+
+export const SHIP_FREE_THRESHOLD = 400;
