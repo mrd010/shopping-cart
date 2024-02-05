@@ -9,15 +9,19 @@ const ShopLayout = styled.div`
   grid-template-columns: 250px 1fr;
 `;
 
+const Vitrain = styled.main`
+  margin: 1rem;
+`;
+
 const Shop = () => {
   const { categories } = useLoaderData();
   return (
     <ShopLayout>
       <PageHeader bgPath={shopBanner} primaryTitle="Browse through our products"></PageHeader>
       <CategoryMenu categories={categories}></CategoryMenu>
-      <main>
+      <Vitrain>
         <Outlet></Outlet>
-      </main>
+      </Vitrain>
     </ShopLayout>
   );
 };

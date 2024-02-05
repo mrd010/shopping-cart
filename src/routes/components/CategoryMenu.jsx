@@ -12,6 +12,7 @@ const SideMenu = styled.nav`
   left: 0;
   align-self: start;
   padding-bottom: 5rem;
+  box-shadow: 0 0 8px ${(props) => props.theme.shadow};
 `;
 
 const MenuTitle = styled.h3`
