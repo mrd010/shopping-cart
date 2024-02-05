@@ -1,4 +1,5 @@
-import { NavLink, Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
+import CategoryMenu from './components/CategoryMenu';
 
 const Shop = () => {
   const { categories } = useLoaderData();
@@ -7,18 +8,7 @@ const Shop = () => {
       <header>
         <h1>Browse through our products</h1>
       </header>
-      <nav>
-        <h3>Categories</h3>
-        <ul>
-          {categories.map((cat) => {
-            return (
-              <li key={cat}>
-                <NavLink to={`category/${cat}`}>{cat}</NavLink>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      <CategoryMenu categories={categories}></CategoryMenu>
       <main>
         <Outlet></Outlet>
       </main>
