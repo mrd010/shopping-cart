@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledHeader = styled.header`
+  grid-column: 1 / -1;
   display: grid;
   grid-template-rows: auto 1fr;
   height: 250px;
