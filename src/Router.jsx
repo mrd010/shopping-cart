@@ -23,7 +23,7 @@ const Router = () => {
           <Route element={<Catalog></Catalog>} path="category/:catName" loader={shopLoader}></Route>
           <Route element={<Catalog></Catalog>} index loader={shopLoader}></Route>
         </Route>
-        <Route element={<Item></Item>} path="shop/product/:productId"></Route>
+        <Route element={<Item></Item>} path="shop/products/:productId"></Route>
         <Route element={<Cart></Cart>} path="/cart" loader={shopLoader}></Route>
       </Route>
     )

@@ -17,6 +17,11 @@ const StyledProductCard = styled.div`
   border-radius: 10px;
   box-shadow: 0 0 10px ${(props) => props.theme.shadow};
   background-color: #fff;
+  transition: transform 0.1s ease;
+  transform-origin: bottom;
+  &:hover {
+    transform: scale(1.03);
+  }
 `;
 
 const ProductInfo = styled(Link)`
@@ -116,7 +121,7 @@ const ProductCard = ({ product, count }) => {
 
   return (
     <StyledProductCard>
-      <ProductInfo to={`product/${product.id}`}>
+      <ProductInfo to={`/shop/products/${product.id}`}>
         <ProductImage src={product.image} alt={product.title} />
         <ShipFreeLabel $isFreeShip={product.price >= SHIP_FREE_THRESHOLD}>
           <Icon iconPath={shipIcon} size={20}></Icon>

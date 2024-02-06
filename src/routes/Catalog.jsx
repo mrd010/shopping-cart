@@ -32,7 +32,7 @@ const CategoryTitle = styled.h2`
 const ProductsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem 0.5rem;
+  gap: 1.25rem;
   padding: 1rem;
 `;
 
