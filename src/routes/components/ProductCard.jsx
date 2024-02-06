@@ -121,7 +121,7 @@ const ProductCard = ({ product, count }) => {
 
   return (
     <StyledProductCard>
-      <ProductInfo to={`/shop/products/${product.id}`}>
+      <ProductInfo to="#">
         <ProductImage src={product.image} alt={product.title} />
         <ShipFreeLabel $isFreeShip={product.price >= SHIP_FREE_THRESHOLD}>
           <Icon iconPath={shipIcon} size={20}></Icon>

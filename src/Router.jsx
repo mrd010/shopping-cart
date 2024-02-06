@@ -8,7 +8,6 @@ import Layout from './routes/Layout';
 import Home from './routes/Home';
 import Shop from './routes/Shop';
 import Cart from './routes/Cart';
-import Item from './routes/Item';
 import ErrorPage from './ErrorPage';
 import { categoriesLoader, shopLoader } from './Loaders';
 import Catalog from './routes/Catalog';
@@ -23,7 +22,6 @@ const Router = () => {
           <Route element={<Catalog></Catalog>} path="category/:catName" loader={shopLoader}></Route>
           <Route element={<Catalog></Catalog>} index loader={shopLoader}></Route>
         </Route>
-        <Route element={<Item></Item>} path="shop/products/:productId"></Route>
         <Route element={<Cart></Cart>} path="/cart" loader={shopLoader}></Route>
       </Route>
     )
