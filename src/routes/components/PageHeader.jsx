@@ -10,7 +10,6 @@ const StyledHeader = styled.header`
   border-radius: 20px;
   overflow: hidden;
   align-items: start;
-  margin-bottom: 2rem;
   box-shadow: 0 0 10px ${(props) => props.theme.shadow};
 `;
 
@@ -32,6 +31,7 @@ const PrimaryTitle = styled.h1`
   grid-column: 1 / -1;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 300;
+  text-transform: capitalize;
 `;
 const SecondaryTitle = styled.p`
   font-size: 1.5rem;

@@ -16,6 +16,7 @@ const StyledNavbar = styled.nav`
   position: sticky;
   top: 0;
   z-index: 50;
+  box-shadow: 0 0 8px ${(props) => props.theme.shadow};
 `;
 
 const StyledNavLink = styled(NavLink)`
