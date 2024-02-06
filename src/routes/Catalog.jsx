@@ -1,6 +1,6 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation } from 'react-router-dom';
 import ProductCard from './components/ProductCard';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../CartContext';
 import styled from 'styled-components';
 import SortMenu from './components/SortMenu';
@@ -36,18 +36,55 @@ const ProductsContainer = styled.div`
   padding: 1rem;
 `;
 
+// component ########################
 const Catalog = () => {
+  const [sortSettings, setSortSettings] = useState({ sortBy: 'name', order: 'ascending' });
   const { category, products } = useLoaderData();
   const cart = useContext(CartContext);
+  const location = useLocation();
+
+  const handleSort = (value) => {
+    setSortSettings(value);
+  };
+
+  useEffect(() => {
+    if (location) {
+      setSortSettings({ sortBy: 'name', order: 'ascending' });
+    }
+  }, [location]);
+
+  const sortedProducts = products.sort((a, b) => {
+    switch (sortSettings.sortBy) {
+      case 'name':
+        return sortSettings.order === 'ascending'
+          ? a.title > b.title
+            ? 1
+            : -1
+          : b.title > a.title
+            ? 1
+            : -1;
+      case 'price':
+        return sortSettings.order === 'ascending' ? a.price - b.price : b.price - a.price;
+      case 'rating':
+        return sortSettings.order === 'ascending'
+          ? a.rating.rate - b.rating.rate
+          : b.rating.rate - a.rating.rate;
+      default:
+        break;
+    }
+  });
   return (
     <CatalogContainer>
       <CatalogHeader>
         {category !== 'all' && <CategoryTitle>{category}</CategoryTitle>}
-        <SortMenu></SortMenu>
+        <SortMenu
+          onSortChange={handleSort}
+          sortBy={sortSettings.sortBy}
+          order={sortSettings.order}
+        ></SortMenu>
       </CatalogHeader>
-
       <ProductsContainer>
-        {products.map((product) => {
+        {sortedProducts.map((product) => {
           const productInCart = cart.find((p) => p.id === product.id);
           return (
             <ProductCard

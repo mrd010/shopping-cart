@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import sortUpIcon from '../../assets/icons/bx-sort-up.svg';
 import sortDownIcon from '../../assets/icons/bx-sort-down.svg';
 import Icon from './Icon';
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledSortMenu = styled.div`
   display: grid;
@@ -52,14 +52,23 @@ const SelectButton = styled.button`
         `}
 `;
 
-const SortMenu = () => {
-  const [sortSettings, setSortSettings] = useState({ sortBy: 'name', order: 'descending' });
+// component #####################
+const SortMenu = ({ sortBy, order, onSortChange }) => {
   return (
     <StyledSortMenu>
       <InputField>
         <label htmlFor="sort-by">Sort By:</label>
         <Inputs>
-          <select id="sort-by">
+          <select
+            id="sort-by"
+            onChange={(e) =>
+              onSortChange({
+                order: e.target.value === 'rating' ? 'descending' : order,
+                sortBy: e.target.value,
+              })
+            }
+            value={sortBy}
+          >
             <option value="name">Name</option>
             <option value="price">Price</option>
             <option value="rating">Rating</option>
@@ -70,26 +79,26 @@ const SortMenu = () => {
         <span>Order:</span>
         <Inputs>
           <SelectButton
-            $selected={sortSettings.order === 'ascending'}
-            onClick={() => setSortSettings({ ...sortSettings, order: 'ascending' })}
+            $selected={order === 'ascending'}
+            onClick={() => onSortChange({ sortBy: sortBy, order: 'ascending' })}
           >
-            <Icon
-              iconPath={sortUpIcon}
-              color={sortSettings.order === 'ascending' ? 'light' : 'dark'}
-            ></Icon>
+            <Icon iconPath={sortUpIcon} color={order === 'ascending' ? 'light' : 'dark'}></Icon>
           </SelectButton>
           <SelectButton
-            $selected={sortSettings.order === 'descending'}
-            onClick={() => setSortSettings({ ...sortSettings, order: 'descending' })}
+            $selected={order === 'descending'}
+            onClick={() => onSortChange({ sortBy: sortBy, order: 'descending' })}
           >
-            <Icon
-              iconPath={sortDownIcon}
-              color={sortSettings.order === 'descending' ? 'light' : 'dark'}
-            ></Icon>
+            <Icon iconPath={sortDownIcon} color={order === 'descending' ? 'light' : 'dark'}></Icon>
           </SelectButton>
         </Inputs>
       </InputField>
     </StyledSortMenu>
   );
+};
+
+SortMenu.propTypes = {
+  sortBy: PropTypes.string.isRequired,
+  order: PropTypes.string.isRequired,
+  onSortChange: PropTypes.func.isRequired,
 };
 export default SortMenu;
