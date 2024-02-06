@@ -7,7 +7,7 @@ export const theme = {
   bg: '#f1f5f9',
   main: '#be123c',
   shadow: 'rgba(0,0,0,0.25)',
-  loadingBG: 'rgba(255,255,255,0.6)',
+  loadingBG: 'rgba(255,255,255,0.7)',
 };
 
 const GlobalStyles = createGlobalStyle`
@@ -20,6 +20,9 @@ const GlobalStyles = createGlobalStyle`
 }
 ${normalize}
 
+html{
+  scroll-behavior: smooth;
+}
 img{
   width: 100%;
   display: block;
@@ -47,28 +50,40 @@ body{
 export const loadingLoader = css`
   /* HTML: <div class="loader"></div> */
   .loader {
-    width: fit-content;
-    font-weight: bold;
-    font-family: monospace;
-    font-size: 30px;
-    color: #0000;
-    background: linear-gradient(
-        90deg,
-        #000 calc(50% - 0.5ch),
-        ${theme.main} 0 calc(50% + 0.5ch),
-        #000 0
-      )
-      right/calc(200% + 1ch) 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    animation: l8 2s infinite steps(11);
+    width: 45px;
+    aspect-ratio: 0.75;
+    --c: no-repeat linear-gradient(${theme.main} 0 0);
+    background:
+      var(--c) 0% 50%,
+      var(--c) 50% 50%,
+      var(--c) 100% 50%;
+    background-size: 20% 50%;
+    animation: l6 1s infinite linear;
   }
-  .loader:before {
-    content: 'Loading...';
-  }
-  @keyframes l8 {
-    to {
-      background-position: left;
+  @keyframes l6 {
+    20% {
+      background-position:
+        0% 0%,
+        50% 50%,
+        100% 50%;
+    }
+    40% {
+      background-position:
+        0% 100%,
+        50% 0%,
+        100% 50%;
+    }
+    60% {
+      background-position:
+        0% 50%,
+        50% 100%,
+        100% 0%;
+    }
+    80% {
+      background-position:
+        0% 50%,
+        50% 50%,
+        100% 100%;
     }
   }
 `;
