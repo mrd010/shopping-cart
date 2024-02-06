@@ -2,6 +2,13 @@ import { createGlobalStyle } from 'styled-components';
 import normalize from 'styled-normalize';
 import abelFont from './assets/fonts/abel-regular-webfont.woff';
 
+export const theme = {
+  fg: '#020617',
+  bg: '#f1f5f9',
+  main: '#be123c',
+  shadow: 'rgba(0,0,0,0.25)',
+};
+
 const GlobalStyles = createGlobalStyle`
   
   @font-face {
@@ -11,29 +18,29 @@ const GlobalStyles = createGlobalStyle`
   font-style: normal;
 }
 ${normalize}
+
 img{
   width: 100%;
   display: block;
 }
-  a{
-    text-decoration: none;
-    color: inherit;
-  }
-  #root{
-    font-family: Abel,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1.2rem;
-    display: flex;
-    flex-flow: column nowrap;
-  }
+a{
+  text-decoration: none;
+  color: inherit;
+}
 
+button{
+  cursor: pointer;
+}
+#root{
+  font-family: Abel,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.2rem;
+  display: flex;
+  flex-flow: column nowrap;
+}
 
+body{
+  background-color: ${theme.bg};
+}
 `;
-
-export const theme = {
-  fg: '#020617',
-  bg: '#f1f5f9',
-  main: '#be123c',
-  shadow: 'rgba(0,0,0,0.25)',
-};
 
 export default GlobalStyles;

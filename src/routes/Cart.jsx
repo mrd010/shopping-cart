@@ -2,6 +2,19 @@ import { useContext } from 'react';
 import ProductCardCart from './components/ProductCardCart';
 import { CartContext } from '../CartContext';
 import { Link, useLoaderData } from 'react-router-dom';
+import PageHeader from './components/PageHeader';
+import cartHeaderImg from '../assets/images/online-grocery-shopping-retail-ecommerce-food.jpg';
+import styled from 'styled-components';
+
+const CartMain = styled.div`
+  display: grid;
+  justify-items: center;
+`;
+const CartProductsContainer = styled.section`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+`;
 
 const Cart = () => {
   const { products } = useLoaderData();
@@ -10,22 +23,10 @@ const Cart = () => {
   const cartCount = cart.reduce((count, product) => count + product.count, 0);
 
   return (
-    <div>
-      <header>
-        <h1>This is your Cart</h1>
-        <div>
-          {cartCount > 0 ? (
-            <>
-              <span>Total Items in Cart :</span>
-              <span>{cartCount}</span>
-            </>
-          ) : (
-            <span>Your cart is empty</span>
-          )}
-        </div>
-      </header>
+    <CartMain>
+      <PageHeader bgPath={cartHeaderImg}></PageHeader>
       <main>
-        <section>
+        <CartProductsContainer>
           {cartCount === 0 ? (
             <div>
               <Link to="../shop">Go to Shop</Link>
@@ -44,12 +45,12 @@ const Cart = () => {
               }
             })
           )}
-        </section>
+        </CartProductsContainer>
         <section>
-          <button>Pay</button>
+          <button>Proceed and Pay</button>
         </section>
       </main>
-    </div>
+    </CartMain>
   );
 };
 export default Cart;

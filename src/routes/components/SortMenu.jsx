@@ -67,7 +67,7 @@ const SortMenu = () => {
         </Inputs>
       </InputField>
       <InputField>
-        <label htmlFor="order">Order:</label>
+        <span>Order:</span>
         <Inputs>
           <SelectButton
             $selected={sortSettings.order === 'ascending'}

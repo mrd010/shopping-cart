@@ -6,9 +6,8 @@ import styled from 'styled-components';
 import Icon from './Icon';
 import shipIcon from '../../assets/icons/local_shipping_FILL0.svg';
 import rateIcon from '../../assets/icons/grade_FILL1.svg';
-import addIcon from '../../assets/icons/add_FILL0.svg';
-import removeIcon from '../../assets/icons/remove_FILL0.svg';
 import { SHIP_FREE_THRESHOLD } from '../../Loaders';
+import AddRemoveButton from './AddRemoveButton';
 
 // styles
 const StyledProductCard = styled.div`
@@ -17,6 +16,7 @@ const StyledProductCard = styled.div`
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 0 10px ${(props) => props.theme.shadow};
+  background-color: #fff;
 `;
 
 const ProductInfo = styled(Link)`
@@ -81,6 +81,7 @@ const ProductPrice = styled.div`
     font-size: 1.8rem;
     padding: 0.25rem 0;
     font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   .dollar {
     font-size: 1.5rem;
@@ -98,30 +99,6 @@ const AddToCartBtn = styled.button`
   transform-origin: top;
   &:hover {
     transform: scaleX(1.2);
-  }
-`;
-const AddRemoveBtn = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  height: 50px;
-  align-items: center;
-  padding: 0 2rem;
-  gap: 0.5rem;
-  button {
-    background-color: ${(props) => props.theme.main};
-    border: none;
-    padding: 0.4rem 0.4rem;
-    cursor: pointer;
-    border-radius: 10px;
-  }
-  .count {
-    text-align: center;
-    background-color: #ddd;
-    padding: 0.4rem 0.4rem;
-    border-radius: 10px;
-    font-weight: 600;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.3rem;
   }
 `;
 
@@ -164,15 +141,12 @@ const ProductCard = ({ product, count }) => {
             <span className="button-text">Add to cart</span>
           </AddToCartBtn>
         ) : (
-          <AddRemoveBtn>
-            <button onClick={handleAddToCart} className="add-button">
-              <Icon iconPath={addIcon}></Icon>
-            </button>
-            <span className="count">{count}</span>
-            <button onClick={handleRemoveFromCart} className="remove-button">
-              <Icon iconPath={removeIcon}></Icon>
-            </button>
-          </AddRemoveBtn>
+          <AddRemoveButton
+            onAdd={handleAddToCart}
+            onRemove={handleRemoveFromCart}
+            count={count}
+            style="h"
+          ></AddRemoveButton>
         )}
       </div>
     </StyledProductCard>
