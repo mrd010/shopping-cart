@@ -31,7 +31,7 @@ const CategoryTitle = styled.h2`
 
 const ProductsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem 0.5rem;
   padding: 1rem;
 `;
@@ -39,7 +39,6 @@ const ProductsContainer = styled.div`
 const Catalog = () => {
   const { category, products } = useLoaderData();
   const cart = useContext(CartContext);
-  console.log(products);
   return (
     <CatalogContainer>
       <CatalogHeader>
