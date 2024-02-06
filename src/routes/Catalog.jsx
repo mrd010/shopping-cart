@@ -1,4 +1,4 @@
-import { useLoaderData, useLocation } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigation } from 'react-router-dom';
 import ProductCard from './components/ProductCard';
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../CartContext';
