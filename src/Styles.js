@@ -7,6 +7,7 @@ export const theme = {
   bg: '#f1f5f9',
   main: '#be123c',
   shadow: 'rgba(0,0,0,0.25)',
+  loadingBG: 'rgba(255,255,255,0.6)',
 };
 
 const GlobalStyles = createGlobalStyle`
