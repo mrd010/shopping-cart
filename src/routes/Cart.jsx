@@ -14,6 +14,7 @@ const CartContainer = styled.div`
 const CartMain = styled.div`
   display: grid;
   justify-items: center;
+  position: relative;
 `;
 const CartProductsContainer = styled.section`
   display: grid;
@@ -25,6 +26,14 @@ const EmptyNotifier = styled.p`
   font-weight: 600;
   margin: 5rem 1rem 1rem 1rem;
   user-select: none;
+`;
+
+const PayButton = styled.section`
+  position: absolute;
+  right: 100%;
+  top: 1rem;
+  width: max-content;
+  margin-right: 1rem;
 `;
 
 const Cart = () => {
@@ -62,9 +71,9 @@ const Cart = () => {
                 })
               )}
             </CartProductsContainer>
-            <section>
-              <button>Proceed and Pay</button>
-            </section>
+            <PayButton>
+              <CustomLink to="#">Proceed and Pay</CustomLink>
+            </PayButton>
           </>
         )}
       </CartMain>
