@@ -102,7 +102,7 @@ const Home = () => {
               free returns, and 24/7 customer support. You can also join our loyalty program and
               earn rewards for every purchase you make.
             </p>
-            <CustomLink to="../support">Get Support</CustomLink>
+            <CustomLink to="#">Get Support</CustomLink>
           </SideDetails>
         </StyledHomeSection>
       </StyledMain>

@@ -10,7 +10,6 @@ import Shop from './routes/Shop';
 import Cart from './routes/Cart';
 import Item from './routes/Item';
 import ErrorPage from './ErrorPage';
-import Support from './routes/Support';
 import { categoriesLoader, shopLoader } from './Loaders';
 import Catalog from './routes/Catalog';
 
@@ -26,7 +25,6 @@ const Router = () => {
         </Route>
         <Route element={<Item></Item>} path="shop/product/:productId"></Route>
         <Route element={<Cart></Cart>} path="/cart" loader={shopLoader}></Route>
-        <Route element={<Support></Support>} path="/support"></Route>
       </Route>
     )
   );

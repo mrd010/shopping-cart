@@ -66,7 +66,7 @@ const Navbar = () => {
         <Icon iconPath={cartIcon} size={28} />
         {cartCount > 0 && <LinkNotifier>{cartCount}</LinkNotifier>}
       </StyledNavLink>
-      <StyledNavLink to="/support">Support</StyledNavLink>
+      <StyledNavLink to="/#">Support</StyledNavLink>
     </StyledNavbar>
   );
 };
