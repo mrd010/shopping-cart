@@ -6,13 +6,12 @@ export const getProducts = async (category) => {
       mode: 'cors',
     });
     if (response.status >= 400 || !response.ok) {
-      throw new Error('Network error');
+      throw new Response(response.statusText, { status: response.status });
     }
     const products = await response.json();
     return products;
   } catch (error) {
-    console.error(error);
-    return error;
+    throw new Error(`Error: ${error.message}`);
   }
 };
 export const getCategories = async () => {
@@ -21,12 +20,11 @@ export const getCategories = async () => {
       mode: 'cors',
     });
     if (response.status >= 400 || !response.ok) {
-      throw new Error('Network error');
+      throw new Response(response.statusText, { status: response.status });
     }
     const categories = await response.json();
     return categories;
   } catch (error) {
-    console.error(error);
-    return error;
+    throw new Error(`Error: ${error.message}`);
   }
 };
