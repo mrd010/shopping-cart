@@ -1,4 +1,4 @@
-import { useRouteError } from 'react-router-dom';
+import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledErrorContainer = styled.div`
@@ -20,7 +20,7 @@ const StyledErrorContainer = styled.div`
 `;
 const ErrorPage = () => {
   const error = useRouteError();
-  if (error instanceof Error) {
+  if (!isRouteErrorResponse(error)) {
     return (
       <StyledErrorContainer>
         <h2 className="header">Error</h2>
@@ -28,6 +28,6 @@ const ErrorPage = () => {
       </StyledErrorContainer>
     );
   }
-  return error;
+  throw error;
 };
 export default ErrorPage;

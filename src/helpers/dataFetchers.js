@@ -2,6 +2,7 @@ const getProductsUrl = 'https://fakestoreapi.com/products';
 
 export const getProducts = async (category) => {
   let response;
+
   try {
     response = await fetch(`${getProductsUrl}${category ? `/category/${category}` : ''}`, {
       mode: 'cors',
