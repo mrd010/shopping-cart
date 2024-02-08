@@ -14,23 +14,25 @@ const StyledHome = styled.div`
 
 const StyledMain = styled.main`
   display: grid;
-  grid-auto-rows: 400px;
+  grid-template-rows: repeat(3, 350px);
   gap: 2rem;
   padding: 2rem 0;
 `;
 
 const StyledHomeSection = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: ${(props) => (props.$align === 'right' ? '1fr auto' : 'auto 1fr')};
   margin: 1rem;
   gap: 4rem;
+  align-items: center;
+  justify-items: ${(props) => (props.$align === 'right' ? 'end' : 'start')};
 `;
 
 const StyledSideImage = styled.div`
-  height: 100%;
   overflow: hidden;
-  box-shadow: 0 0 5px ${(props) => props.theme.shadow};
   border-radius: 10px;
+  box-shadow: 0 0 5px ${(props) => props.theme.shadow};
+  height: 100%;
   img {
     height: 100%;
     object-fit: cover;
@@ -45,6 +47,7 @@ const SideDetails = styled.div`
   justify-items: ${(props) => props.$align};
   padding: 1rem 3rem;
   gap: 1rem;
+  overflow: hidden;
   p {
     text-align: ${(props) => props.$align};
     font-size: 1.4rem;
@@ -69,7 +72,7 @@ const Home = () => {
         bgPath={headerImg}
       ></PageHeader>
       <StyledMain>
-        <StyledHomeSection>
+        <StyledHomeSection $align="left">
           <StyledSideImage>
             <img src={productTypesImg} />
           </StyledSideImage>
@@ -80,7 +83,7 @@ const Home = () => {
             </p>
           </SideDetails>
         </StyledHomeSection>
-        <StyledHomeSection>
+        <StyledHomeSection $align="right">
           <SideDetails $align="right">
             <p>
               Browse our wide range of products across different categories and find what you are
@@ -92,7 +95,7 @@ const Home = () => {
             <img src={onlineShopImg} alt="online shopping" />
           </StyledSideImage>
         </StyledHomeSection>
-        <StyledHomeSection>
+        <StyledHomeSection $align="left">
           <StyledSideImage>
             <img src={supportImg} alt="support" />
           </StyledSideImage>
