@@ -10,7 +10,12 @@ const StyledHeader = styled.header`
   border-radius: 20px;
   overflow: hidden;
   align-items: start;
+
   box-shadow: 0 0 10px ${(props) => props.theme.shadow};
+  @media screen and (max-width: 768px) {
+    align-items: end;
+    grid-template-rows: 1fr auto;
+  }
 `;
 
 const BgImage = styled.img`
@@ -32,14 +37,27 @@ const PrimaryTitle = styled.h1`
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 300;
   text-transform: capitalize;
+  text-shadow: 0 0 5px ${(props) => props.theme.shadow};
+  padding-right: 1rem;
+  @media screen and (max-width: 480px) {
+    font-size: 2rem;
+  }
 `;
 const SecondaryTitle = styled.p`
   font-size: 1.5rem;
+  text-shadow: 0 0 5px ${(props) => props.theme.shadow};
   margin: 0 2rem;
   grid-row: 2 / 3;
   grid-column: 1 / -1;
   font-weight: 600;
   user-select: none;
+  padding-right: 1rem;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const PageHeader = ({ primaryTitle, secondaryTitle, bgPath }) => {

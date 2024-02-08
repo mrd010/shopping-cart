@@ -8,6 +8,9 @@ const StyledCartCard = styled.div`
   display: grid;
   grid-template-columns: 1fr 100px;
   gap: 1rem;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const ProductCartInfo = styled.div`
@@ -19,6 +22,13 @@ const ProductCartInfo = styled.div`
   padding: 1rem;
   border-radius: 10px;
   background-color: #fff;
+  @media screen and (max-width: 768px) {
+    padding: 0.5rem;
+  }
+  @media screen and (max-width: 480px) {
+    grid-template-columns: 100px minmax(100px, 300px) auto;
+    grid-template-rows: repeat(2, 80px);
+  }
 `;
 
 const DeleteProduct = styled.div`
@@ -42,6 +52,9 @@ const DeleteProduct = styled.div`
       border-color: transparent;
     }
   }
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 const ProductImage = styled.img`
   grid-row: 1 / -1;
@@ -54,6 +67,9 @@ const ProductTitle = styled.span`
   grid-row: 1 / 2;
   grid-column: 2 / 3;
   align-self: end;
+  @media screen and (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
 const ProductTotalPrice = styled.div`
   grid-row: 2 / -1;
@@ -68,6 +84,9 @@ const ProductTotalPrice = styled.div`
     font-weight: 600;
     font-size: 2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    @media screen and (max-width: 480px) {
+      font-size: 1.5rem;
+    }
   }
 `;
 

@@ -16,15 +16,15 @@ import Errors400 from './Errors400';
 const Router = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout></Layout>} errorElement={<Errors400></Errors400>}>
+      <Route
+        path="/"
+        element={<Layout></Layout>}
+        loader={categoriesLoader}
+        errorElement={<Errors400></Errors400>}
+      >
         <Route element={<Home></Home>} index></Route>
         <Route element={<Home></Home>} path="/home"></Route>
-        <Route
-          element={<Shop></Shop>}
-          path="/shop"
-          loader={categoriesLoader}
-          errorElement={<ErrorPage></ErrorPage>}
-        >
+        <Route element={<Shop></Shop>} path="/shop" errorElement={<ErrorPage></ErrorPage>}>
           <Route errorElement={<ErrorPage></ErrorPage>}>
             <Route element={<Catalog></Catalog>} index loader={shopLoader}></Route>
             <Route

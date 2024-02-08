@@ -12,6 +12,10 @@ const StyledSortMenu = styled.div`
   gap: 1rem;
   padding: 1rem;
   font-size: 1rem;
+  @media screen and (max-width: 768px) {
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
 `;
 
 const InputField = styled.div`

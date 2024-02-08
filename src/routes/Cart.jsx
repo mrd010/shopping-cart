@@ -15,6 +15,10 @@ const CartMain = styled.div`
   display: grid;
   justify-items: center;
   position: relative;
+  margin: 0 2rem;
+  @media screen and (max-width: 768px) {
+    margin: 0 1rem;
+  }
 `;
 const CartProductsContainer = styled.section`
   display: grid;
@@ -26,6 +30,7 @@ const EmptyNotifier = styled.p`
   font-weight: 600;
   margin: 5rem 1rem 1rem 1rem;
   user-select: none;
+  text-align: center;
 `;
 
 const PayButton = styled.section`
@@ -34,6 +39,17 @@ const PayButton = styled.section`
   top: 1rem;
   width: max-content;
   margin-right: 1rem;
+  @media screen and (max-width: 1280px) {
+    right: auto;
+    bottom: 110%;
+    top: auto;
+    left: 0;
+    margin-bottom: 2rem;
+  }
+  @media screen and (max-width: 480px) {
+    position: static;
+    margin: 2rem;
+  }
 `;
 
 const Cart = () => {

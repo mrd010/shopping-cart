@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { useContext } from 'react';
+import Categories from '../../CategoriesContext';
 
 const SideMenu = styled.nav`
   background-color: ${(props) => props.theme.fg};
@@ -13,12 +15,22 @@ const SideMenu = styled.nav`
   align-self: start;
   padding-bottom: 3rem;
   box-shadow: 0 0 8px ${(props) => props.theme.shadow};
+
+  @media screen and (max-width: 768px) {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    position: static;
+  }
 `;
 
 const MenuTitle = styled.h3`
+  margin: 0;
+  padding: 1rem;
   font-size: 1.5rem;
-  margin: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  @media screen and (max-width: 768px) {
+  }
 `;
 
 const LinkList = styled.ul`
@@ -26,6 +38,7 @@ const LinkList = styled.ul`
   padding: 0;
   display: flex;
   flex-flow: column nowrap;
+  margin: 0;
 `;
 
 const MenuItem = styled.li`
@@ -61,7 +74,8 @@ const MenuLink = styled(NavLink)`
   }
 `;
 
-const CategoryMenu = ({ categories }) => {
+const CategoryMenu = () => {
+  const categories = useContext(Categories);
   return (
     <SideMenu>
       <MenuTitle>Categories</MenuTitle>
@@ -70,7 +84,7 @@ const CategoryMenu = ({ categories }) => {
           return (
             <MenuItem key={cat}>
               <MenuLink
-                to={`category/${cat}`}
+                to={`/shop/category/${cat}`}
                 className={({ isActive, isPending }) => [
                   isActive ? 'active' : '',
                   isPending ? 'pending' : '',

@@ -25,8 +25,16 @@ const CategoryTitle = styled.h2`
   padding: 0 1rem;
   margin: 0;
   font-size: 2rem;
+  white-space: nowrap;
   text-transform: capitalize;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  @media screen and (max-width: 768px) {
+    font-size: 4vw;
+    padding: 0 0.5rem;
+  }
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const ProductsContainer = styled.div`
@@ -34,6 +42,12 @@ const ProductsContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.25rem;
   padding: 1rem;
+  @media screen and (max-width: 1280px) {
+    padding: 0;
+  }
+  @media screen and (max-width: 480px) {
+    gap: 3rem;
+  }
 `;
 
 // component ########################

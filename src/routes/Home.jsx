@@ -14,18 +14,30 @@ const StyledHome = styled.div`
 
 const StyledMain = styled.main`
   display: grid;
-  grid-template-rows: repeat(3, 350px);
-  gap: 2rem;
-  padding: 2rem 0;
+  grid-template-rows: repeat(3, minmax(300px, 20vw));
+  gap: 2vw;
+  padding: 2rem 15vw;
+  @media screen and (max-width: 1280px) {
+    padding: 2rem 5vw;
+    gap: 1rem;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 2rem 0;
+    gap: 1rem;
+  }
 `;
 
 const StyledHomeSection = styled.section`
   display: grid;
   grid-template-columns: ${(props) => (props.$align === 'right' ? '1fr auto' : 'auto 1fr')};
   margin: 1rem;
-  gap: 4rem;
+  gap: calc(2rem + 2vw);
   align-items: center;
   justify-items: ${(props) => (props.$align === 'right' ? 'end' : 'start')};
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
 `;
 
 const StyledSideImage = styled.div`
@@ -45,21 +57,33 @@ const SideDetails = styled.div`
   display: grid;
   align-content: center;
   justify-items: ${(props) => props.$align};
-  padding: 1rem 3rem;
+  padding: 1rem 0;
   gap: 1rem;
   overflow: hidden;
   p {
     text-align: ${(props) => props.$align};
     font-size: 1.4rem;
-    padding: 0 1rem;
     ${(props) =>
       props.$align === 'right'
         ? css`
             border-right: 5px solid ${(props) => props.theme.main};
+            padding-right: 1rem;
           `
         : css`
             border-left: 5px solid ${(props) => props.theme.main};
+            padding-left: 1rem;
           `}
+  }
+  @media screen and (max-width: 1280px) {
+    gap: 0.5rem;
+    p {
+      font-size: calc(1.2rem + 0.5vw);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    p {
+      font-size: calc(0.9rem + 0.5vw);
+    }
   }
 `;
 

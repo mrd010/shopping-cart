@@ -1,10 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import homeIcon from '../../assets/icons/home_FILL0.svg';
 import cartIcon from '../../assets/icons/shopping_cart_FILL0.svg';
+import menuIcon from '../../assets/icons/menu_FILL0.svg';
 import styled from 'styled-components';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../CartContext';
 import Icon from './Icon';
+import CategoryMenu from './CategoryMenu';
 
 const StyledNavbar = styled.nav`
   display: flex;
@@ -17,6 +19,9 @@ const StyledNavbar = styled.nav`
   top: 0;
   z-index: 50;
   box-shadow: 0 0 8px ${(props) => props.theme.shadow};
+  @media screen and (max-width: 480px) {
+    padding: 0;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -27,6 +32,7 @@ const StyledNavLink = styled(NavLink)`
   gap: 0.25rem;
   align-items: center;
   grid-auto-flow: column;
+  background-color: transparent;
   &:hover,
   &.active {
     background-color: ${(props) => props.theme.main};
@@ -34,10 +40,22 @@ const StyledNavLink = styled(NavLink)`
   &.pending:not(.active) {
     background-color: ${(props) => props.theme.linkHGL};
   }
+  &.menu-button {
+    display: none;
+    @media screen and (max-width: 768px) {
+      display: block;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    padding: 0.75rem 0.6rem;
+  }
 `;
 
 const LinkText = styled.span`
   transform: translateY(2px);
+  @media screen and (max-width: 480px) {
+    display: ${(props) => (props.$hasIcon ? 'none' : 'inline-block')};
+  }
 `;
 
 const LinkNotifier = styled.span`
@@ -55,12 +73,28 @@ const LinkNotifier = styled.span`
   font-family: 'Courier New', Courier, monospace;
 `;
 
+const MenuContainer = styled.div`
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+`;
+
 const Navbar = () => {
   const cart = useContext(CartContext);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
   const cartCount = cart.reduce((count, product) => count + product.count, 0);
 
   return (
     <StyledNavbar>
+      <StyledNavLink as="button" onClick={() => setMenuIsOpen(!menuIsOpen)} className="menu-button">
+        <Icon iconPath={menuIcon}></Icon>
+      </StyledNavLink>
+
       <StyledNavLink
         to="/home"
         className={({ isActive, isPending }) => [
@@ -69,7 +103,7 @@ const Navbar = () => {
         ]}
       >
         <Icon iconPath={homeIcon} size={28} />
-        <LinkText>Home</LinkText>
+        <LinkText $hasIcon>Home</LinkText>
       </StyledNavLink>
       <StyledNavLink
         to="/shop"
@@ -78,7 +112,7 @@ const Navbar = () => {
           isActive ? 'active' : '',
         ]}
       >
-        <LinkText>Shop</LinkText>
+        <LinkText $noIcon>Shop</LinkText>
       </StyledNavLink>
       <StyledNavLink
         to="/cart"
@@ -100,6 +134,7 @@ const Navbar = () => {
       >
         Support
       </StyledNavLink>
+      <MenuContainer>{menuIsOpen && <CategoryMenu></CategoryMenu>}</MenuContainer>
     </StyledNavbar>
   );
 };
