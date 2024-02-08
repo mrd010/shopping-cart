@@ -35,18 +35,29 @@ const MenuItem = styled.li`
   text-transform: capitalize;
   display: block;
   cursor: pointer;
-  &:hover {
-    background-color: #dddddd33;
-    border-left: 5px solid ${(props) => props.theme.main};
-  }
 `;
 
 const MenuLink = styled(NavLink)`
   padding: 0.75rem 2rem;
   display: block;
   transition: transform 0.1s ease;
-  &:hover {
-    transform: translateX(5px);
+  .link-text {
+    display: inline-block;
+    transition: transform 0.1s ease;
+  }
+  &:not(.active):hover {
+    border-left: 5px solid ${(props) => props.theme.main};
+    background-color: #dddddd33;
+    .link-text {
+      transform: translateX(5px);
+    }
+  }
+  &.pending {
+    background-color: #dddddd33;
+    border-left: 5px solid ${(props) => props.theme.main};
+  }
+  &.active {
+    background-color: ${(props) => props.theme.main};
   }
 `;
 
@@ -58,7 +69,15 @@ const CategoryMenu = ({ categories }) => {
         {categories.map((cat) => {
           return (
             <MenuItem key={cat}>
-              <MenuLink to={`category/${cat}`}>{cat}</MenuLink>
+              <MenuLink
+                to={`category/${cat}`}
+                className={({ isActive, isPending }) => [
+                  isActive ? 'active' : '',
+                  isPending ? 'pending' : '',
+                ]}
+              >
+                <span className="link-text">{cat}</span>
+              </MenuLink>
             </MenuItem>
           );
         })}

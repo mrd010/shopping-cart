@@ -22,12 +22,17 @@ const StyledNavbar = styled.nav`
 const StyledNavLink = styled(NavLink)`
   position: relative;
   padding: 0.75rem 1rem;
+  border: 1px solid ${(props) => props.theme.fg};
   display: grid;
   gap: 0.25rem;
   align-items: center;
   grid-auto-flow: column;
-  &:hover {
+  &:hover,
+  &.active {
     background-color: ${(props) => props.theme.main};
+  }
+  &.pending:not(.active) {
+    background-color: ${(props) => props.theme.linkHGL};
   }
 `;
 
@@ -56,18 +61,45 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <StyledNavLink to="/home">
+      <StyledNavLink
+        to="/home"
+        className={({ isActive, isPending }) => [
+          isPending ? 'pending' : '',
+          isActive ? 'active' : '',
+        ]}
+      >
         <Icon iconPath={homeIcon} size={28} />
         <LinkText>Home</LinkText>
       </StyledNavLink>
-      <StyledNavLink to="/shop">
+      <StyledNavLink
+        to="/shop"
+        className={({ isActive, isPending }) => [
+          isPending ? 'pending' : '',
+          isActive ? 'active' : '',
+        ]}
+      >
         <LinkText>Shop</LinkText>
       </StyledNavLink>
-      <StyledNavLink to="/cart" style={{ marginRight: 'auto' }}>
+      <StyledNavLink
+        to="/cart"
+        style={{ marginRight: 'auto' }}
+        className={({ isActive, isPending }) => [
+          isPending ? 'pending' : '',
+          isActive ? 'active' : '',
+        ]}
+      >
         <Icon iconPath={cartIcon} size={28} />
         {cartCount > 0 && <LinkNotifier>{cartCount}</LinkNotifier>}
       </StyledNavLink>
-      <StyledNavLink to="/#">Support</StyledNavLink>
+      <StyledNavLink
+        to="/#"
+        className={({ isActive, isPending }) => [
+          isPending ? 'pending' : '',
+          isActive ? 'active' : '',
+        ]}
+      >
+        Support
+      </StyledNavLink>
     </StyledNavbar>
   );
 };

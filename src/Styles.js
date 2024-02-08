@@ -8,6 +8,7 @@ export const theme = {
   main: '#be123c',
   shadow: 'rgba(0,0,0,0.25)',
   loadingBG: 'rgba(255,255,255,0.7)',
+  linkHGL: 'rgba(255,255,255,0.2)',
 };
 
 const GlobalStyles = createGlobalStyle`
